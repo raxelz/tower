@@ -259,7 +259,7 @@ class UserDataComponent extends React.Component<Props> {
                             </Typography>
                         </Grid>
                         <Grid item xs={3}>
-                            {this.state.showMore ? (
+                            {user.profile === null || this.state.showMore ? (
                                 <><Typography variant="h6" gutterBottom component="h6">
                                   <b>Postcode</b>
                                 </Typography>
@@ -292,7 +292,7 @@ class UserDataComponent extends React.Component<Props> {
                             </Grid>
                         </Grid>
                     </Grid>
-                    {this.state.showMore ? this.showMetadata(user.profile.metadata) : null}
+                    {this.state.showMore && user.profile !== null ? this.showMetadata(user.profile.metadata) : null}
                     <Typography variant="h5" gutterBottom component="h5">
                         Labels
                     </Typography>
@@ -414,19 +414,24 @@ class UserDataComponent extends React.Component<Props> {
     private showMetadata = (metadata: any) => {
         let grids = [];
         let res = [];
+        let i = 4; //container's number
         grids.push(this.getGrid('City', this.props.user.profile !== null ? this.props.user.profile.city : '-'));
         grids.push(this.getGrid('Address', this.props.user.profile !== null ? this.props.user.profile.address : '-'));
-        for (var key in metadata) {
-            if (metadata.hasOwnProperty(key)) {
-                grids.push(this.getGrid(key, metadata[key]));
-                if (grids.length === 4) {
-                    res.push(this.wrapGrids(grids))
-                    grids = [];
+
+        if (metadata !== null) {
+            for (var key in metadata) {
+                if (metadata.hasOwnProperty(key)) {
+                    grids.push(this.getGrid(key, metadata[key]));
+                    if (grids.length === 4) {
+                        res.push(this.wrapGrids(grids, i));
+                        grids = [];
+                        i += 1;
+                    }
                 }
             }
         }
         grids.push(
-            <Grid item xs={3}>
+            <Grid item xs={3} key='less'>
                 <Button onClick={(e) => this.showMoreUserInfo(e)} style={{ marginTop: 10 }}>
                     <Typography variant="h6" component="h6" style={{ color: "#3598D5" }}>
                         LESS USER INFO
@@ -436,16 +441,16 @@ class UserDataComponent extends React.Component<Props> {
         );
         while (grids.length < 4) {
             grids.push(
-                <Grid item xs={3} />
+                <Grid item xs={3} key={`empty${grids.length}`}/>
             )
         }
-        res.push(this.wrapGrids(grids));
+        res.push(this.wrapGrids(grids, i));
         return res;
     };
 
-    private wrapGrids = (grids: JSX.Element[]) => {
+    private wrapGrids = (grids: JSX.Element[], i: number) => {
        return (
-           <Grid container justify={"space-between"} style={{marginTop: 20, marginBottom: 40}}>
+           <Grid key={`container${i}`} container justify={"space-between"} style={{marginTop: 20, marginBottom: 40}}>
                {grids}
            </Grid>
            );
@@ -453,7 +458,7 @@ class UserDataComponent extends React.Component<Props> {
 
     private getGrid = (key: string, value: string) => {
         return (
-            <Grid item xs={3}>
+            <Grid item xs={3} key={key}>
                 <Typography variant="h6" gutterBottom component="h6">
                     <b>{key.slice(0, 1).toUpperCase() + key.slice(1)}</b>
                 </Typography>
@@ -483,8 +488,12 @@ class UserDataComponent extends React.Component<Props> {
     };
 
     private changeUserOTP = (e: any) => {
-        this.props.changeOTP(e.target.checked);
-        this.setState({ otp: e.target.checked });
+        if (this.state.otp) {
+            this.props.changeOTP(e.target.checked);
+            this.setState({otp: e.target.checked});
+        } else {
+            alert('2FA can only be enabled by the user');
+        }
     };
 
     private showMoreUserInfo = (e: any) => {
