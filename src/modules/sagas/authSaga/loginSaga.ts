@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { loginError, LoginFetch, loginData, logout } from '../../actions';
+import { loginError, LoginFetch, loginData, logout, signInRequire2FA } from '../../actions';
 import { API } from '../../../api';
 
 export function* loginSaga(action: LoginFetch) {
@@ -13,6 +13,13 @@ export function* loginSaga(action: LoginFetch) {
             yield put(logout());
         }
     } catch (error) {
-        yield put(loginError(error));
+        const responseStatus = error.code;
+        const is2FAEnabled = responseStatus === 403;
+
+        if (is2FAEnabled) {
+            yield put(signInRequire2FA({ require2fa: true }));
+        } else {
+            yield put(loginError(error));
+        }
     }
 }
