@@ -4,7 +4,7 @@ import { API } from '../../../api';
 
 export function* getUsersSaga(action: GetUsersFetch) {
     try {
-        const users = yield call(API.get(), '/api/v2/barong/admin/users');
+        const users = yield call(API.get(), '/admin/users');
         yield put(getUsersData(users));
     } catch (error) {
         yield put(getUsersError(error));

@@ -4,7 +4,7 @@ import { API } from '../../../api';
 
 export function* loginSaga(action: LoginFetch) {
     try {
-        const user = yield call(API.post(), '/api/v2/barong/identity/sessions', action.payload);
+        const user = yield call(API.post(), '/identity/sessions', action.payload);
         if (user.role === 'admin') {
             yield put(loginData(user));
             document.cookie = 'session=true; path=/';

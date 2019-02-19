@@ -1,3 +1,3 @@
 window.env = {
-  API_URL: 'http://www.app.local'
+  authUrl: 'http://www.app.local/api/v2/barong'
 };

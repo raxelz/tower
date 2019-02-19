@@ -8,7 +8,7 @@ import { API } from '../../../api';
 
 export function* getUserDataSaga(action: UserDataFetch) {
     try {
-        const user = yield call(API.get(), `/api/v2/barong/admin/users/${action.payload.uid}`);
+        const user = yield call(API.get(), `/admin/users/${action.payload.uid}`);
         yield put(getUserDataSuccess(user));
     } catch (error) {
         yield put(getUserDataError(error));

@@ -1,2 +1,2 @@
 window.env = window.env || {};
-export const host = window.env.API_URL || 'http://localhost:9002';
+export const host = window.env.authUrl || 'http://localhost:9002/api/v2/barong';
