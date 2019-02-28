@@ -9,6 +9,8 @@ steps:
     - yarn
     - yarn build
     - yarn test
+  when:
+    event: [pull_request]
 
 - name: Tag
   image: node:11
@@ -27,10 +29,8 @@ steps:
     - git push --tags authenticated-origin
     - git describe --tags $(git rev-list --tags --max-count=1) > .tags
   when:
-    branch:
-      - master
-    event:
-      - push
+    branch: [master]
+    event: [push]
 
 - name: Push image by tag
   image: plugins/docker
@@ -41,10 +41,8 @@ steps:
     password:
       from_secret: kitebot_docker_password
   when:
-    branch:
-      - master
-    event:
-      - push
+    branch: [master]
+    event: [push]
 
 - name: Push image by git sha
   image: plugins/docker
@@ -57,23 +55,39 @@ steps:
     tags:
       - ${DRONE_BRANCH}-${DRONE_COMMIT_SHA:0:7}
   when:
-    branch:
-      - devel
-    event:
-      - push
+    branch: [devel]
+    event: [push]
 
 - name: Deploy to microkube
   image: rubykube/microkube:0.1.0
   environment:
-      WEBHOOK_JWT_SECRET:
-          from_secret: microkube_webhook_secret
+    WEBHOOK_JWT_SECRET:
+      from_secret: devkube_webhook_secret
+    DEPLOY_HOST:
+      from_secret: deploy_host
   commands:
     - latest_image=rubykube/tower:$(cat .tags)
     - cd /home/app
-    - bundle exec rake payload:send[tower,$latest_image,http://www.microkube.com:1337]
+    - bundle exec rake payload:send[tower,$latest_image,http://$DEPLOY_HOST:1337]
   when:
-    branch:
-      - master
-    event:
-      - push
+    branch: [master]
+    event: [push]
 
+- name: "Notify about redeployment on devkube"
+  image: plugins/slack
+  settings:
+    webhook:
+      from_secret: cryptobase_slack_webhook
+    channel:
+      from_secret: cryptobase_slack_channel
+    template: >
+      {{#success build.status}}
+        [SUCCESS] (Tower) New version has been published!!
+      {{else}}
+        [FAILURE] (Tower) Master branch build by {{ build.author }} has failed!
+      {{/success}}
+      Check the build info here: {{ build.link }}
+  when:
+    branch: [master]
+    status: [success, failure]
+    event: [push]
