@@ -6,11 +6,55 @@ steps:
 - name: Test
   image: node:11
   commands:
-    - yarn
+    - yarn install
     - yarn build
-    - yarn test
+    - yarn test --collectCoverage=true
   when:
-    event: [pull_request]
+    event: [push]
+
+- name: "Stage with mock server"
+  image: alpine/git
+  environment:
+    PRIVATE_KEY:
+      from_secret: deploy_key
+    WINDOW_ENV:
+      from_secret: window_env
+    BUILD_HOME:
+      from_secret: build_home
+  commands:
+    - echo "$PRIVATE_KEY" | base64 -d > id_rsa
+    - chmod 0600 id_rsa
+    - cd build/
+    - echo $WINDOW_ENV > env.js
+    - cd /drone/src/
+    - scp -r -i id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null build $BUILD_HOME/${DRONE_COMMIT_SHA:0:7}
+    - scp -r -i id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null coverage/lcov-report $BUILD_HOME/${DRONE_COMMIT_SHA:0:7}-coverage
+    - echo "http://${DRONE_COMMIT_SHA:0:7}.mock.openware.work"
+    - echo "http://${DRONE_COMMIT_SHA:0:7}-coverage.mock.openware.work"
+  when:
+    #branch: [master]
+    event: [push]
+
+- name: "Notify staging"
+  image: plugins/slack
+  settings:
+    webhook:
+      from_secret: cryptobase_slack_webhook
+    channel:
+      from_secret: cryptobase_slack_channel
+    template: >
+      {{#success build.status}}
+        [SUCCESS] (Tower) Branch {{ build.branch }} by {{ build.author }} staging has succeeded!
+        Visit http://{{ truncate build.commit 7 }}.mock.openware.work to check it out!
+        Coverage report: http://{{ truncate build.commit 7 }}-coverage.mock.openware.work
+      {{else}}
+        [FAILURE] Branch {{ build.branch }} by {{ build.author }} staging has failed!
+      {{/success}}
+      Check the build info here: {{ build.link }}
+  when:
+    branch: [master]
+    status: [success, failure]
+    event: [push]
 
 - name: Tag
   image: node:11
