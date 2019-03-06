@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { AppRouter } from './router';
 import { Alerts } from './containers';
+import { AppRouter } from './router';
 
 class App extends React.Component {
     public render() {

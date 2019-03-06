@@ -71,7 +71,7 @@ const errors = {
 
 export const convertError = (value: string) => {
     if (errors.hasOwnProperty(value)) {
-        return (<any>errors)[value];
+        return (errors as any)[value];
     }
     return value;
 };

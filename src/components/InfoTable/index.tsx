@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
     createStyles,
     Table,
@@ -11,6 +10,7 @@ import {
     WithStyles,
     withStyles,
 } from '@material-ui/core';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import {
     convertToOtp,
@@ -19,7 +19,7 @@ import {
 
 interface InfoTableProps {
     dataLength: number;
-    rows: { key: string; alignRight: boolean; label: string; }[];
+    rows: Array<{ key: string; alignRight: boolean; label: string; }>;
     data: any;
     page: number;
     rowsPerPage: number;
@@ -76,10 +76,10 @@ class TableComponent extends React.Component<Props> {
                                                 <TableCell key={index} component="th" align={row.alignRight ? 'right' : 'left'}>
                                                     { row.key === 'email' ? (<Link to={`/users/${n.uid}`} className={classes.link}>{n.email}</Link>)
                                                         : row.key === 'otp' ? (convertToOtp(n.otp) === 'true' ? '2FA' : '-')
-                                                        : row.key === 'upload' ? (<a target='_blank' href={n.upload.url} className={classes.link}>Image</a>)
+                                                        : row.key === 'upload' ? (<a target="_blank" href={n.upload.url} className={classes.link}>Image</a>)
                                                         : row.key === 'created_at' || row.key === 'validated_at' || row.key === 'updated_at' ? (convertToUTCTime(n[row.key])) : n[row.key]}
                                                 </TableCell>
-                                            )})
+                                            );})
                                         }
                                     </TableRow>
                                 );

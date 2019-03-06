@@ -1,11 +1,11 @@
-import { UsersAction, UserInterface } from './actions';
 import {
-    GET_CURRENT_USER_FETCH,
     GET_CURRENT_USER_DATA,
+    GET_CURRENT_USER_FETCH,
     GET_DATA_BY_FILTER_FETCH,
     GET_USERS_FETCH,
     GET_USERS_SUCCESS,
 } from '../../constants';
+import { UserInterface, UsersAction } from './actions';
 
 export interface UsersState {
     loading: boolean;
@@ -21,7 +21,7 @@ const initial: UsersState = {
     loadingCurrentUser: false,
     users: [],
     usersTotal: 0,
-}
+};
 
 export const usersReducer = (state = initial, action: UsersAction) => {
     switch (action.type) {
@@ -58,4 +58,4 @@ export const usersReducer = (state = initial, action: UsersAction) => {
               ...state,
           };
     }
-}
+};

@@ -10,15 +10,15 @@ import {
     AlertMessage,
 } from '../../components';
 import {
+    convertError,
+} from '../../helpers';
+import {
     alertDelete,
     alertDeleteByIndex,
     AlertState,
     AppState,
     selectAlertState,
 } from '../../modules';
-import {
-    convertError
-} from '../../helpers';
 
 interface ReduxProps {
     alerts: AlertState;
@@ -56,7 +56,7 @@ class AlertComponent extends React.Component<Props> {
                     <div key={k} onClick={() => this.deleteAlertByIndex(k)}>
                         {w.message && w.message.map((e, i) =>
                             <AlertMessage key={i} message={convertError(e)} type={w.type as 'error' | 'snackbar' | 'success'} />)}
-                    </div>)
+                    </div>),
                 )}
             </div>
         );

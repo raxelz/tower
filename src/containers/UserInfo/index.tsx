@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
     connect,
     MapDispatchToPropsFunction,
@@ -11,12 +11,12 @@ import {
 } from '../../components';
 import {
     addNewLabel,
-    editLabel,
     AppState,
-    changeUserState,
-    changeUserRole,
     changeUserOTP,
+    changeUserRole,
+    changeUserState,
     deleteLabel,
+    editLabel,
     getUserData,
     logout,
     selectUserData,
@@ -218,7 +218,7 @@ class UserInfoScreen extends React.Component<Props, UserInfoState> {
     };
 
     private handleChangeUserOTP = (e: any) => {
-        if(!e.target.checked){
+        if (!e.target.checked){
             const { uid } = this.props.userData;
             this.props.changeUserOTP({uid: uid, otp: e.target.checked});
         } else {
@@ -249,7 +249,7 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, {}> =
         changeUserState: payload => dispatch(changeUserState(payload)),
         changeUserRole: payload => dispatch(changeUserRole(payload)),
         changeUserOTP: payload => dispatch(changeUserOTP(payload)),
-        deleteLabel: (payload) => dispatch(deleteLabel(payload)),
+        deleteLabel:payload => dispatch(deleteLabel(payload)),
         getUserData: payload => dispatch(getUserData(payload)),
         logout: () => dispatch(logout()),
     });

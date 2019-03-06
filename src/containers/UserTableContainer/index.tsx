@@ -5,21 +5,21 @@ import {
     MapStateToProps,
 } from 'react-redux';
 import {
+    tablePageLimit,
+} from '../../api/config';
+import {
+    DataItemInterface,
+    InfoTable,
+    SearchHeader,
+} from '../../components';
+import {
     AppState,
-    getUsers,
     getDataByFilter,
+    getUsers,
     selectUsers,
     selectUsersTotal,
     UserInterface,
 } from '../../modules';
-import {
-    InfoTable,
-    SearchHeader,
-    DataItemInterface,
-} from '../../components';
-import {
-    tablePageLimit,
-} from '../../api/config';
 
 interface UserTableState {
     page: number;
@@ -46,7 +46,7 @@ class DashboardUserTable extends React.Component<Props, UserTableState> {
 
         this.state = {
             page: 0,
-            rowsPerPage: tablePageLimit,
+            rowsPerPage: tablePageLimit(),
             searchPoint: this.dropdownValues[0],
             searchValue: '',
         };
@@ -151,13 +151,13 @@ class DashboardUserTable extends React.Component<Props, UserTableState> {
         const { searchValue, searchPoint } = this.state;
         this.setState({ page });
         if (searchPoint.value === 'all') {
-            this.props.getUsers({ limit: tablePageLimit, page: page + 1});
+            this.props.getUsers({ limit: tablePageLimit(), page: page + 1});
         } else {
           const requestObject = {
               field: searchPoint.value,
               value: searchValue.toLowerCase(),
               page: page + 1,
-              limit: tablePageLimit,
+              limit: tablePageLimit(),
           };
           this.props.getDataByFilter(requestObject);
         }
@@ -169,13 +169,13 @@ class DashboardUserTable extends React.Component<Props, UserTableState> {
         }
         const { searchValue, searchPoint } = this.state;
         if (searchPoint.value === 'all') {
-            this.props.getUsers({ limit: tablePageLimit, page: 1});
+            this.props.getUsers({ limit: tablePageLimit(), page: 1});
         } else {
             const requestObject = {
                 field: searchPoint.value,
                 value: searchValue.toLowerCase(),
                 page: 1,
-                limit: tablePageLimit,
+                limit: tablePageLimit(),
             };
             this.props.getDataByFilter(requestObject);
         }

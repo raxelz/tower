@@ -3,7 +3,6 @@ import {
     Grid,
     TextField,
 } from '@material-ui/core';
-import React from "react";
 import {
     createStyles,
     Modal,
@@ -12,12 +11,13 @@ import {
     WithStyles,
     withStyles,
 } from '@material-ui/core';
+import * as React from 'react';
 
 const styles = (theme: Theme) => createStyles({
     paper: {
         display: 'block',
         margin: '100px auto',
-        width: "360px",
+        width: '360px',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 2,
@@ -29,7 +29,7 @@ const styles = (theme: Theme) => createStyles({
     },
     menu: {
         width: 400,
-    }
+    },
 });
 
 interface StyleProps extends WithStyles<typeof styles> {
@@ -75,15 +75,15 @@ class EditLabelModal extends React.Component<Props> {
                 open={this.props.open}
                 onClose={this.handleClose}
             >
-                <Grid container direction={"column"} className={classes.paper}>
-                    <Grid item>
+                <Grid container={true} direction={'column'} className={classes.paper}>
+                    <Grid item={true}>
                         <Typography variant="h5" component="h5" className={classes.textField}>
                             Edit Label
                         </Typography>
                     </Grid>
-                    <Grid item>
+                    <Grid item={true}>
                         <TextField
-                            required
+                            required={true}
                             id="standard-required"
                             label="Key"
                             value={name}
@@ -93,9 +93,9 @@ class EditLabelModal extends React.Component<Props> {
                             variant="outlined"
                         />
                     </Grid>
-                    <Grid item>
+                    <Grid item={true}>
                         <TextField
-                            required
+                            required={true}
                             id="standard-required"
                             label="Value"
                             value={value}
@@ -105,9 +105,9 @@ class EditLabelModal extends React.Component<Props> {
                             variant="outlined"
                         />
                     </Grid>
-                    <Grid item>
+                    <Grid item={true}>
                         <TextField
-                            select
+                            select={true}
                             value={scope}
                             label="Scope"
                             className={classes.textField}
@@ -128,19 +128,19 @@ class EditLabelModal extends React.Component<Props> {
                             ))}
                         </TextField>
                     </Grid>
-                    <Grid item>
-                        <Grid container justify={"flex-end"} spacing={8} style={{ marginTop: 20 }}>
+                    <Grid item={true}>
+                        <Grid container={true} justify={'flex-end'} spacing={8} style={{ marginTop: 20 }}>
 
-                            <Grid item>
-                                <Button onClick={(e) => this.cancelEditingLabel()}>
-                                    <Typography variant="h6" component="h6" style={{ color: "#3598D5" }}>
+                            <Grid item={true}>
+                                <Button onClick={e => this.cancelEditingLabel()}>
+                                    <Typography variant="h6" component="h6" style={{ color: '#3598D5' }}>
                                         CANCEL
                                     </Typography>
                                 </Button>
                             </Grid>
-                            <Grid item>
-                                <Button onClick={(e) => this.editLabel(name, value, scope)}>
-                                    <Typography variant="h6" component="h6" style={{ color: "#3598D5" }}>
+                            <Grid item={true}>
+                                <Button onClick={e => this.editLabel(name, value, scope)}>
+                                    <Typography variant="h6" component="h6" style={{ color: '#3598D5' }}>
                                         OK
                                     </Typography>
                                 </Button>

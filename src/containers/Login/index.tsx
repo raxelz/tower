@@ -6,7 +6,7 @@ import {
     WithStyles,
     withStyles,
 } from '@material-ui/core';
-import React from 'react';
+import * as React from 'react';
 import {
     connect,
     MapDispatchToPropsFunction,
@@ -128,4 +128,4 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, {}> =
         login: payload => dispatch(login(payload)),
     });
 
-export const Login = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(LoginScreen));
+export const Login = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(LoginScreen as any));

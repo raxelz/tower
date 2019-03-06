@@ -2,9 +2,8 @@ import axios, {
     AxiosError,
     AxiosPromise,
     AxiosRequestConfig,
-    AxiosResponse,
 } from 'axios';
-import { host } from './config';
+import { authUrl } from './config';
 
 export type HTTPMethod =
     'get'
@@ -14,6 +13,7 @@ export type HTTPMethod =
     | 'patch';
 
 export interface JsonBody {
+    // tslint:disable-next-line:no-any
     [key: string]: any;
 }
 
@@ -24,18 +24,11 @@ export interface Request {
 }
 
 export interface ApiVariety {
-    gateway: string;
-}
-
-export interface Window {
-    env: {
-        authUrl: string;
-        tablePageLimit: number;
-    }
+    barong: string;
 }
 
 const api: ApiVariety = {
-    gateway: host,
+    barong: authUrl(),
 };
 
 const buildRequest = (request: Request) => {
@@ -49,7 +42,7 @@ const buildRequest = (request: Request) => {
         'content-type': contentType,
     };
 
-    const apiUrl = api['gateway'];
+    const apiUrl = api.barong;
 
     const requestConfig: AxiosRequestConfig = {
         baseURL: apiUrl,
@@ -84,7 +77,7 @@ export const makeRequest = (request: Request) => {
     return new Promise((resolve, reject) => {
         const axiosRequest: AxiosPromise = axios(requestConfig);
         axiosRequest
-            .then((response: AxiosResponse) => resolve(response))
+            .then(resolve)
             .catch((error: AxiosError) => {
                 reject(formatError(error));
             });

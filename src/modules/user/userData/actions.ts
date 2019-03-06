@@ -4,14 +4,14 @@ import {
 } from '../../constants';
 
 export interface UserDataFetch {
-    type: typeof GET_USER_DATA_FETCH,
+    type: typeof GET_USER_DATA_FETCH;
     payload: {
         uid: string,
     };
 }
 
 export interface UserDataSuccess {
-    type: typeof GET_USER_DATA_SUCCESS,
+    type: typeof GET_USER_DATA_SUCCESS;
     payload: {
         user: any,
     };

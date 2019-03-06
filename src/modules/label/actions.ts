@@ -5,7 +5,7 @@ import {
 } from '../constants';
 
 export interface AddUserLabelFetch {
-    type: typeof ADD_USER_LABEL_FETCH,
+    type: typeof ADD_USER_LABEL_FETCH;
     payload: {
         uid: string,
         key: string,
@@ -15,7 +15,7 @@ export interface AddUserLabelFetch {
 }
 
 export interface DeleteUserLabelFetch {
-    type: typeof DELETE_USER_LABEL_FETCH,
+    type: typeof DELETE_USER_LABEL_FETCH;
     payload: {
         uid: string,
         key: string,
@@ -24,7 +24,7 @@ export interface DeleteUserLabelFetch {
 }
 
 export interface EditUserLabelFetch {
-    type: typeof EDIT_USER_LABEL_FETCH,
+    type: typeof EDIT_USER_LABEL_FETCH;
     payload: {
         uid: string,
         key: string,

@@ -1,9 +1,9 @@
-import { Alert, AlertAction } from './actions';
 import {
     ALERT_DATA,
     ALERT_DELETE,
     ALERT_DELETE_BY_INDEX,
 } from '../constants';
+import { Alert, AlertAction } from './actions';
 
 export interface AlertState {
     alerts: Alert[];

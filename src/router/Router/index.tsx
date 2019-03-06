@@ -1,15 +1,15 @@
+import * as Cookies from 'js-cookie';
 import * as React from 'react';
 import {
+    Redirect,
     Route,
     Switch,
-    Redirect,
 } from 'react-router-dom';
 import {
     Dashboard,
     Login,
     UserInfo,
 } from '../../containers';
-import Cookies from 'js-cookie';
 
 const PrivateRoute: React.SFC<any> = ({ component: CustomComponent, isLogged, ...rest }) => {
     return <Route {...rest} render={props => (

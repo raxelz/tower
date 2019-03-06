@@ -5,27 +5,27 @@ import {
 } from '../constants';
 
 export interface ChangeUserOTPFetch {
-    type: typeof CHANGE_USER_OTP_FETCH,
+    type: typeof CHANGE_USER_OTP_FETCH;
     payload: {
         uid: string;
         otp: boolean;
-    },
+    };
 }
 
 export interface ChangeUserRoleFetch {
-    type: typeof CHANGE_USER_ROLE_FETCH,
+    type: typeof CHANGE_USER_ROLE_FETCH;
     payload: {
         uid: string;
         role: string;
-    },
+    };
 }
 
 export interface ChangeUserStateFetch {
-    type: typeof CHANGE_USER_STATE_FETCH,
+    type: typeof CHANGE_USER_STATE_FETCH;
     payload: {
         uid: string;
         state: string;
-    },
+    };
 }
 
 export type ChangeUserAction = ChangeUserOTPFetch | ChangeUserRoleFetch | ChangeUserStateFetch;

@@ -15,7 +15,7 @@ interface UserDataInterface {
 }
 
 export interface LoginFetch {
-    type: typeof LOGIN_FETCH,
+    type: typeof LOGIN_FETCH;
     payload: {
         email: string,
         password: string,
@@ -24,7 +24,7 @@ export interface LoginFetch {
 }
 
 export interface LoginData {
-    type: typeof LOGIN_DATA,
+    type: typeof LOGIN_DATA;
     payload: UserDataInterface;
 }
 
@@ -36,10 +36,10 @@ export interface SignInRequire2FA {
 }
 
 export interface LogoutFetch {
-    type: typeof LOGOUT_FETCH,
+    type: typeof LOGOUT_FETCH;
 }
 
-export type AuthAction = LoginFetch 
+export type AuthAction = LoginFetch
     | LoginData
     | SignInRequire2FA
     | LogoutFetch;

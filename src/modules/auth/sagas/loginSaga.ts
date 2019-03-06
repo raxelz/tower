@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 import {
-    LoginFetch,
     loginData,
+    LoginFetch,
     logout,
     signInRequire2FA,
 } from '../';

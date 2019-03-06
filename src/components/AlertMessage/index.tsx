@@ -1,5 +1,3 @@
-import React from 'react';
-import classNames from 'classnames';
 import {
     createStyles,
     SnackbarContent,
@@ -7,6 +5,8 @@ import {
     withStyles,
     WithStyles,
 } from '@material-ui/core';
+import classNames from 'classnames';
+import * as React from 'react';
 
 const styles = (theme: Theme) => createStyles({
     snackbar: {
@@ -35,7 +35,7 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 class AlertMessageComponent extends React.Component<Props> {
-    render() {
+    public render() {
         const { classes, message, type } = this.props;
         const cx = classNames(classes[type], classes.snackbar);
         return (
@@ -44,8 +44,7 @@ class AlertMessageComponent extends React.Component<Props> {
                 message={
                   <span id="client-snackbar" className={classes.message}>
                     {message}
-                  </span>
-                }
+                  </span>}
             />
         );
     }

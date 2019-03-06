@@ -11,7 +11,7 @@ import {
     withStyles,
 } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/LockOutlined';
-import React from 'react';
+import * as React from 'react';
 
 const styles = (theme: Theme) => createStyles({
     avatar: {
@@ -24,8 +24,8 @@ const styles = (theme: Theme) => createStyles({
     },
     submit: {
         marginTop: theme.spacing.unit * 3,
-        backgroundColor: "#3598D5",
-        color: "#ffffff",
+        backgroundColor: '#3598D5',
+        color: '#ffffff',
     },
 });
 
@@ -63,19 +63,19 @@ class LoginComponent extends React.Component<Props> {
                     Sign in
                 </Typography>
                 <form className={classes.form}>
-                    <FormControl margin="normal" required fullWidth style={{ color: "#3598D5" }}>
-                        <InputLabel htmlFor="email" style={{ color: "#3598D5" }}>Email Address</InputLabel>
+                    <FormControl margin="normal" required={true} fullWidth={true} style={{ color: '#3598D5' }}>
+                        <InputLabel htmlFor="email" style={{ color: '#3598D5' }}>Email Address</InputLabel>
                         <Input
                             id="email"
                             name="email"
                             value={email}
                             onChange={this.handleEmail}
                             autoComplete="email"
-                            autoFocus
+                            autoFocus={true}
                         />
                     </FormControl>
-                    <FormControl margin="normal" required fullWidth style={{ color: "#3598D5" }}>
-                        <InputLabel htmlFor="password" style={{ color: "#3598D5" }}>Password</InputLabel>
+                    <FormControl margin="normal" required={true} fullWidth={true} style={{ color: '#3598D5' }}>
+                        <InputLabel htmlFor="password" style={{ color: '#3598D5' }}>Password</InputLabel>
                         <Input
                             name="password"
                             type="password"
@@ -85,19 +85,19 @@ class LoginComponent extends React.Component<Props> {
                             autoComplete="current-password"
                         />
                     </FormControl>
-                    { require2FA ? (<FormControl margin="normal" required fullWidth style={{ color: "#3598D5" }}>
-                        <InputLabel htmlFor="otp_code" style={{ color: "#3598D5" }}>OTP code</InputLabel>
+                    { require2FA ? (<FormControl margin="normal" required={true} fullWidth={true} style={{ color: '#3598D5' }}>
+                        <InputLabel htmlFor="otp_code" style={{ color: '#3598D5' }}>OTP code</InputLabel>
                         <Input
                             id="otp_code"
                             name="otp_code"
                             onChange={this.handleOTPCode}
-                            autoFocus
+                            autoFocus={true}
                         />
-                    </FormControl>) : null }
+                    </FormControl>) : null}
                     <Button
                         type="button"
                         onClick={this.signIn}
-                        fullWidth
+                        fullWidth={true}
                         variant="contained"
                         className={classes.submit}
                     >

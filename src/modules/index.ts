@@ -1,5 +1,5 @@
-import { all, call } from 'redux-saga/effects';
 import { combineReducers } from 'redux';
+import { all, call } from 'redux-saga/effects';
 import {
     alertReducer,
     AlertState,

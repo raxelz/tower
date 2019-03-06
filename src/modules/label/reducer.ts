@@ -1,9 +1,9 @@
-import { LabelAction } from './actions';
 import {
     ADD_USER_LABEL_FETCH,
     DELETE_USER_LABEL_FETCH,
     EDIT_USER_LABEL_FETCH,
 } from '../constants';
+import { LabelAction } from './actions';
 
 export interface LabelState {
     labelAdded: boolean;

@@ -1,6 +1,6 @@
+import { createStyles, CssBaseline, WithStyles } from '@material-ui/core';
+import { Theme, withStyles } from '@material-ui/core/styles';
 import * as React from 'react';
-import { WithStyles, createStyles, CssBaseline } from '@material-ui/core';
-import { withStyles, Theme } from '@material-ui/core/styles';
 
 import { Navbar } from '../';
 
@@ -31,7 +31,7 @@ class LayoutComponent extends React.Component<Props, object> {
     public render() {
         const {
             classes,
-            children
+            children,
         } = this.props;
 
         return (

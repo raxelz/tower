@@ -2,8 +2,8 @@ import {
     createStyles,
     IconButton,
     MenuItem,
-    Theme,
     TextField,
+    Theme,
     withStyles,
     WithStyles,
 } from '@material-ui/core';
@@ -52,14 +52,14 @@ interface OwnProps {
 type Props = StyleProps & OwnProps;
 
 class SearchHeaderComponent extends React.Component<Props> {
-    render() {
+    public render() {
         const { classes, data, searchValue, searchPoint } = this.props;
 
         return (
-            <form className={classes.container} noValidate autoComplete="off" onSubmit={e => this.props.handleSearch(e)}>
+            <form className={classes.container} noValidate={true} autoComplete="off" onSubmit={e => this.props.handleSearch(e)}>
                 <TextField
                     id="outlined-select-currency"
-                    select
+                    select={true}
                     label="Search by"
                     className={classNames(classes.margin, classes.textField)}
                     value={searchPoint.value}

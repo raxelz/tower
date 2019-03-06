@@ -1,9 +1,9 @@
-import { ChangeUserAction } from './actions';
 import {
     CHANGE_USER_OTP_FETCH,
     CHANGE_USER_ROLE_FETCH,
     CHANGE_USER_STATE_FETCH,
 } from '../constants';
+import { ChangeUserAction } from './actions';
 
 export interface ChangeUserState {
     OTPChanged: boolean;

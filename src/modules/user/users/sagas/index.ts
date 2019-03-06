@@ -1,7 +1,7 @@
 import { takeLatest } from 'redux-saga/effects';
-import { GET_USERS_FETCH, GET_CURRENT_USER_FETCH, GET_DATA_BY_FILTER_FETCH } from '../../../constants';
-import { getUsersSaga, getUsersSagaSearch } from './getUsersSaga';
+import { GET_CURRENT_USER_FETCH, GET_DATA_BY_FILTER_FETCH, GET_USERS_FETCH } from '../../../constants';
 import { getCurrentUserSaga } from './getCurrentUserSaga';
+import { getUsersSaga, getUsersSagaSearch } from './getUsersSaga';
 
 export function* rootUsersSaga() {
     yield takeLatest(GET_USERS_FETCH, getUsersSaga);

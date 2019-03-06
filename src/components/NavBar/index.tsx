@@ -81,7 +81,7 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 class NavBar extends React.Component<Props> {
-    render() {
+    public render() {
         const { classes } = this.props;
 
         return (

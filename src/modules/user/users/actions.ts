@@ -1,6 +1,6 @@
 import {
-    GET_CURRENT_USER_FETCH,
     GET_CURRENT_USER_DATA,
+    GET_CURRENT_USER_FETCH,
     GET_DATA_BY_FILTER_FETCH,
     GET_USERS_FETCH,
     GET_USERS_SUCCESS,
@@ -16,7 +16,7 @@ export interface UserInterface {
     email: string;
     id: number;
     level: number;
-    otp: false
+    otp: false;
     role: string;
     state: string;
     uid: string;
@@ -24,38 +24,38 @@ export interface UserInterface {
 }
 
 export interface GetUsersFetch {
-    type: typeof GET_USERS_FETCH,
+    type: typeof GET_USERS_FETCH;
     payload?: {
         page: number;
         limit: number;
-    },
+    };
 }
 
 export interface GetUsersSuccess {
-    type: typeof GET_USERS_SUCCESS,
+    type: typeof GET_USERS_SUCCESS;
     payload: {
         users: UserInterface[],
         total: number,
-    },
+    };
 }
 
 export interface GetCurrentUserFetch {
-    type: typeof GET_CURRENT_USER_FETCH,
+    type: typeof GET_CURRENT_USER_FETCH;
 }
 
 export interface GetCurrentUserData {
-    type: typeof GET_CURRENT_USER_DATA,
+    type: typeof GET_CURRENT_USER_DATA;
     payload: UserInterface;
 }
 
 export interface GetDataByFilterFetch {
-    type: typeof GET_DATA_BY_FILTER_FETCH,
+    type: typeof GET_DATA_BY_FILTER_FETCH;
     payload: {
         field: string;
         value: string;
         page?: number;
         limit?: number;
-    }
+    };
 }
 
 export type UsersAction = GetUsersFetch

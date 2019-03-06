@@ -1,10 +1,10 @@
-import { AuthAction } from './';
 import {
     LOGIN_DATA,
     LOGIN_FETCH,
     LOGOUT_FETCH,
     SIGN_IN_REQUIRE_2FA,
 } from '../constants';
+import { AuthAction } from './';
 
 interface UserDataInterface {
     email: string;
@@ -39,10 +39,10 @@ export const authReducer = (state = {}, action: AuthAction) => {
             return {
                 ...state,
                 require2FA: action.payload.require2fa,
-            }
+            };
         default:
             return {
                 ...state,
             };
     }
-}
+};

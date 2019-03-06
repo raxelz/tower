@@ -1,8 +1,8 @@
-import { UserDataAction } from './actions';
 import {
     GET_USER_DATA_FETCH,
     GET_USER_DATA_SUCCESS,
 } from '../../constants';
+import { UserDataAction } from './actions';
 
 export interface UserDataState {
     userData: any;
@@ -32,4 +32,4 @@ export const userDataReducer = (state = initial, action: UserDataAction) => {
               ...state,
           };
     }
-}
+};
