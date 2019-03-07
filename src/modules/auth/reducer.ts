@@ -1,6 +1,7 @@
 import {
     LOGIN_DATA,
     LOGIN_FETCH,
+    LOGOUT_DATA,
     LOGOUT_FETCH,
     SIGN_IN_REQUIRE_2FA,
 } from '../constants';
@@ -20,7 +21,11 @@ export interface AuthState {
     require2FA?: boolean;
 }
 
-export const authReducer = (state = {}, action: AuthAction) => {
+export const initialStateAuth = {
+    user: {},
+};
+
+export const authReducer = (state = initialStateAuth, action: AuthAction) => {
     switch (action.type) {
         case LOGIN_FETCH:
             return {
@@ -34,6 +39,11 @@ export const authReducer = (state = {}, action: AuthAction) => {
         case LOGOUT_FETCH:
             return {
                 ...state,
+            };
+        case LOGOUT_DATA:
+            return  {
+                ...state,
+                user: {},
             };
         case SIGN_IN_REQUIRE_2FA:
             return {

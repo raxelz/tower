@@ -15,7 +15,7 @@ export interface UsersState {
     usersTotal: number;
 }
 
-const initial: UsersState = {
+export const initialUsersState: UsersState = {
     loading: false,
     currentUser: undefined,
     loadingCurrentUser: false,
@@ -23,7 +23,7 @@ const initial: UsersState = {
     usersTotal: 0,
 };
 
-export const usersReducer = (state = initial, action: UsersAction) => {
+export const usersReducer = (state = initialUsersState, action: UsersAction) => {
     switch (action.type) {
       case GET_USERS_FETCH:
           return {

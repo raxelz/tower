@@ -9,12 +9,12 @@ export interface UserDataState {
     getUserData: boolean;
 }
 
-const initial: UserDataState = {
+export const initialUserDataState: UserDataState = {
     userData: undefined,
     getUserData: false,
 };
 
-export const userDataReducer = (state = initial, action: UserDataAction) => {
+export const userDataReducer = (state = initialUserDataState, action: UserDataAction) => {
     switch (action.type) {
       case GET_USER_DATA_FETCH:
           return {

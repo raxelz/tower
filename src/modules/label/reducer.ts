@@ -11,13 +11,13 @@ export interface LabelState {
     labelEdited: boolean;
 }
 
-const initial: LabelState = {
+export const initialLabelState: LabelState = {
     labelAdded: false,
     labelDeleted: false,
     labelEdited: false,
 };
 
-export const labelReducer = (state = initial, action: LabelAction) => {
+export const labelReducer = (state = initialLabelState, action: LabelAction) => {
     switch (action.type) {
       case ADD_USER_LABEL_FETCH:
           return {

@@ -6,28 +6,23 @@ import {
     GET_USERS_SUCCESS,
 } from '../../constants';
 
-export interface GetUsersError {
-    code?: number;
-    message?: string;
-}
-
 export interface UserInterface {
-    created_at: string;
+    created_at?: string;
     email: string;
-    id: number;
+    id?: number;
     level: number;
-    otp: false;
+    otp: boolean;
     role: string;
     state: string;
     uid: string;
-    updated_at: string;
+    updated_at?: string;
 }
 
 export interface GetUsersFetch {
     type: typeof GET_USERS_FETCH;
-    payload?: {
-        page: number;
-        limit: number;
+    payload: {
+        page?: number;
+        limit?: number;
     };
 }
 

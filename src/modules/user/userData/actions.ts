@@ -12,9 +12,7 @@ export interface UserDataFetch {
 
 export interface UserDataSuccess {
     type: typeof GET_USER_DATA_SUCCESS;
-    payload: {
-        user: any,
-    };
+    payload: any;
 }
 
 export type UserDataAction = UserDataFetch | UserDataSuccess;

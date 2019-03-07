@@ -11,13 +11,13 @@ export interface ChangeUserState {
     stateChanged: boolean;
 }
 
-const initial: ChangeUserState = {
+export const initialChangeUserState: ChangeUserState = {
     OTPChanged: false,
     roleChanged: false,
     stateChanged: false,
 };
 
-export const changeUserReducer = (state = initial, action: ChangeUserAction) => {
+export const changeUserReducer = (state = initialChangeUserState, action: ChangeUserAction) => {
     switch (action.type) {
         case CHANGE_USER_OTP_FETCH:
             return {

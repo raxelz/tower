@@ -11,6 +11,10 @@ export function* changeUserOTPSaga(action: ChangeUserOTPFetch) {
         yield call(API.put(), `/admin/users`, action.payload);
         yield put(getUserData({uid: action.payload.uid}));
     } catch (error) {
-        yield put(alertPush({message: error.message, code: error.code, type: 'error'}));
+        yield put(alertPush({
+            message: error.message,
+            code: error.code,
+            type: 'error',
+        }));
     }
 }
