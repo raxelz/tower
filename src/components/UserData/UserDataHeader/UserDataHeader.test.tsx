@@ -1,9 +1,9 @@
-import {UserDataHeader, UserDataHeaderProps} from './index';
 import {shallow} from 'enzyme';
 import * as React from 'react';
+import {UserDataHeader, UserDataHeaderProps} from './index';
 
 const defaults: UserDataHeaderProps = {
-    classes: {}
+    classes: {},
 };
 
 describe('UserDataHeader component', () => {

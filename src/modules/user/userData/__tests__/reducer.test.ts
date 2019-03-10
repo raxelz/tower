@@ -1,5 +1,5 @@
 import * as actions from '../actions';
-import { userDataReducer, initialUserDataState } from '../reducer';
+import { initialUserDataState, userDataReducer } from '../reducer';
 
 describe('UserData reducer', () => {
     it('should handle GET_USER_DATA_FETCH', () => {

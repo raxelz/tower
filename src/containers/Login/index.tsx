@@ -25,7 +25,7 @@ const styles = (theme: Theme) => createStyles({
         display: 'block',
         marginLeft: theme.spacing.unit * 3,
         marginRight: theme.spacing.unit * 3,
-        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+        [theme.breakpoints.up(theme.spacing.unit * 6 + 400)]: {
             width: 400,
             marginLeft: 'auto',
             marginRight: 'auto',
@@ -94,18 +94,21 @@ class LoginScreen extends React.Component<Props, LoginState> {
         );
     }
 
+    // tslint:disable-next-line:no-any
     private handleChangeEmailValue = (e: any) => {
         this.setState({
           email: e.target.value,
         });
     };
 
+    // tslint:disable-next-line:no-any
     private handleChangePasswordValue = (e: any) => {
         this.setState({
           password: e.target.value,
         });
     };
 
+    // tslint:disable-next-line:no-any
     private handleChangeOTPCodeValue = (e: any) => {
         this.setState({
             otp_code: e.target.value,
@@ -128,4 +131,5 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, {}> =
         login: payload => dispatch(login(payload)),
     });
 
+// tslint:disable-next-line:no-any
 export const Login = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(LoginScreen as any));

@@ -46,6 +46,7 @@ interface OwnProps {
     searchValue: string;
     handleChangeSearchValue: (value: string) => void;
     handleChangeSearchPoint: (value: string) => void;
+    // tslint:disable-next-line:no-any
     handleSearch: (e?: any) => void;
 }
 
@@ -64,19 +65,11 @@ class SearchHeaderComponent extends React.Component<Props> {
                     className={classNames(classes.margin, classes.textField)}
                     value={searchPoint.value}
                     onChange={e => this.props.handleChangeSearchPoint(e.target.value)}
-                    SelectProps={{
-                        MenuProps: {
-                            className: classes.menu,
-                        },
-                    }}
+                    SelectProps={{ MenuProps: { className: classes.menu }}}
                     margin="normal"
                     variant="outlined"
                 >
-                    {data.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
+                    {data.map(option => (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>))}
                 </TextField>
                 <TextField
                     id="outlined-adornment-weight"
@@ -85,9 +78,7 @@ class SearchHeaderComponent extends React.Component<Props> {
                     label={searchPoint.label}
                     value={searchValue}
                     onChange={e => this.props.handleChangeSearchValue(e.target.value)}
-                    InputProps={{
-                        endAdornment: <IconButton className={classes.iconButton} aria-label="Search" onClick={this.props.handleSearch}><SearchIcon /></IconButton>,
-                    }}
+                    InputProps={{endAdornment: <IconButton className={classes.iconButton} aria-label="Search" onClick={this.props.handleSearch}><SearchIcon /></IconButton>}}
                 />
             </form>
         );

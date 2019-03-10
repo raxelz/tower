@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { LogoutFetch, logoutData } from '../';
+import { logoutData, LogoutFetch } from '../';
 import { alertPush } from '../../';
 import { API } from '../../../api';
 

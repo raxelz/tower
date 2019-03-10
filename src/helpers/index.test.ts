@@ -4,6 +4,7 @@ import {
     findPhone,
 } from './';
 
+// tslint:disable-next-line:no-any
 const defaults: any = {
     time: '2019-01-10T12:14:16Z',
     otp: true,

@@ -1,8 +1,12 @@
+import {
+    Grid,
+    Typography,
+} from '@material-ui/core';
 import * as React from 'react';
-import {Grid, Typography} from '@material-ui/core';
 import {convertToUTCTime} from '../../../helpers';
 
 export interface UserDataFooterProps {
+    // tslint:disable-next-line:no-any
     user: any;
 }
 
@@ -23,6 +27,6 @@ export class UserDataFooter extends React.Component<UserDataFooterProps> {
                     </Typography>
                 </Grid>
             </Grid>
-        )
+        );
     }
 }

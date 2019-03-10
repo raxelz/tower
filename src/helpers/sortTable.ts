@@ -1,3 +1,4 @@
+// tslint:disable:no-any
 const desc = (a: any, b: any, orderBy: any) => {
     if (b[orderBy] < a[orderBy]) {
         return -1;

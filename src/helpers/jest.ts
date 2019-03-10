@@ -17,6 +17,7 @@ export const setupMockAxios = () => {
     return new MockAdapter(Axios);
 };
 
+// tslint:disable-next-line:no-any
 export const mockNetworkError = (mockAxios: any) => {
     mockAxios.onAny().networkError();
 };

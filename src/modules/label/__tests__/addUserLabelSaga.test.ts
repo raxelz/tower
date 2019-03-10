@@ -1,20 +1,20 @@
 import MockAdapter from 'axios-mock-adapter';
 import { MockStoreEnhanced } from 'redux-mock-store';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
-import { rootSaga, getUserData } from '../../';
+import { getUserData, rootSaga } from '../../';
 import {
     mockNetworkError,
     setupMockAxios,
     setupMockStore,
 } from '../../../helpers';
 import {
-    addNewLabel,
-} from '../actions';
-import {
-    alertPush,
     alertData,
     alertDelete,
+    alertPush,
 } from '../../alert';
+import {
+    addNewLabel,
+} from '../actions';
 
 describe('AddNewLabel saga', () => {
     let store: MockStoreEnhanced;

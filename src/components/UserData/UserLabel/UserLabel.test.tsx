@@ -1,6 +1,6 @@
-import {UserLabel, UserLabelProps} from './index';
 import {shallow} from 'enzyme';
 import * as React from 'react';
+import {UserLabel, UserLabelProps} from './index';
 
 const defaults: UserLabelProps = {
     classes: {},

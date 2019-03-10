@@ -38,7 +38,7 @@ interface OwnProps {
     password: string;
     handleChangeEmail: (email: string) => void;
     handleChangePassword: (password: string) => void;
-    handleOTPCode: (otp_code: string) => void;
+    handleOTPCode: (otpCode: string) => void;
     handleSignIn: () => void;
     require2FA?: boolean;
 }
@@ -108,14 +108,17 @@ class LoginComponent extends React.Component<Props> {
         );
     }
 
+    // tslint:disable-next-line:no-any
     private handleEmail = (e: any) => {
         this.props.handleChangeEmail(e);
     };
 
+    // tslint:disable-next-line:no-any
     private handlePassword = (e: any) => {
         this.props.handleChangePassword(e);
     };
 
+    // tslint:disable-next-line:no-any
     private handleOTPCode = (e: any) => {
         this.props.handleOTPCode(e);
     };

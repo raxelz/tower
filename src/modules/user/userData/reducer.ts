@@ -5,6 +5,7 @@ import {
 import { UserDataAction } from './actions';
 
 export interface UserDataState {
+    // tslint:disable-next-line:no-any
     userData: any;
     getUserData: boolean;
 }

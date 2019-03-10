@@ -1,7 +1,6 @@
 import { createStyles, CssBaseline, WithStyles } from '@material-ui/core';
 import { Theme, withStyles } from '@material-ui/core/styles';
 import * as React from 'react';
-
 import { Navbar } from '../';
 
 const styles = (theme: Theme) => createStyles({

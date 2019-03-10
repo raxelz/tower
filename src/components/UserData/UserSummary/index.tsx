@@ -1,9 +1,17 @@
+import {
+    Button,
+    Grid,
+    Switch,
+    TextField,
+    Typography,
+} from '@material-ui/core';
+import Countries = require('country-data');
 import * as React from 'react';
-import {Button, Grid, Switch, TextField, Typography} from '@material-ui/core';
-import {convertToUTCTime, findPhone} from '../../../helpers';
+import { convertToUTCTime, findPhone } from '../../../helpers';
 
+// tslint:disable:no-any
 export interface UserSummaryProps {
-    classes: any,
+    classes: any;
     user: any;
     handleChangeUserState: (e: any) => void;
     handleChangeRole: (e: any) => void;
@@ -11,6 +19,7 @@ export interface UserSummaryProps {
     showMore: boolean;
     showMoreUserInfo: (e: any) => void;
 }
+// tslint:enable:no-any
 
 const stateTypes = [
     {
@@ -34,7 +43,6 @@ const roleTypes = [
     },
 ];
 
-const countries = require('country-data').countries;
 
 export class UserSummary extends React.Component<UserSummaryProps> {
     public render() {
@@ -175,8 +183,12 @@ export class UserSummary extends React.Component<UserSummaryProps> {
                             <><Typography variant="h6" gutterBottom={true} component="h6">
                                 <b>Postcode</b>
                             </Typography>
-                                <Typography variant="h6" gutterBottom={true} component="h6"
-                                            style={{color: '#757575'}}>
+                                <Typography
+                                    variant="h6"
+                                    gutterBottom={true}
+                                    component="h6"
+                                    style={{color: '#757575'}}
+                                >
                                     {user.profile !== null ? user.profile.postcode : '-'}
                                 </Typography></>
                         ) : (
@@ -206,14 +218,14 @@ export class UserSummary extends React.Component<UserSummaryProps> {
                     </Grid>
                 </Grid>
             </React.Fragment>
-        )
+        );
     }
 
     private displayCountry = (code: string) => {
         if (code === 'null') {
             return '-';
-        } else if (countries[code.toUpperCase()] !== undefined) {
-            return countries[code.toUpperCase()].name;
+        } else if (Countries.countries[code.toUpperCase()] !== undefined) {
+            return Countries.countries[code.toUpperCase()].name;
         }
         return code;
     }

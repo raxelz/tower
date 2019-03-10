@@ -2,10 +2,10 @@ import MockAdapter from 'axios-mock-adapter';
 import { MockStoreEnhanced } from 'redux-mock-store';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 import { rootSaga } from '../../';
-import { Tower, defaultConfig } from '../../../api/config';
+import { defaultConfig, Tower } from '../../../api/config';
 import { setupMockAxios, setupMockStore } from '../../../helpers/jest';
-import { alertPush } from '../actions';
 import { ALERT_DATA, ALERT_DELETE, ALERT_PUSH } from '../../constants';
+import { alertPush } from '../actions';
 
 const debug = false;
 

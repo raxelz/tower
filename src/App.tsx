@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Alerts } from './containers';
 import { AppRouter } from './router';
 
-class App extends React.Component {
+class AppLayout extends React.Component {
     public render() {
         return (
             <BrowserRouter basename="/tower">
@@ -16,4 +16,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export const App = AppLayout;

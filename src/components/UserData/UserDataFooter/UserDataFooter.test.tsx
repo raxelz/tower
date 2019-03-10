@@ -1,9 +1,9 @@
-import {UserDataFooter, UserDataFooterProps} from './index';
 import {shallow} from 'enzyme';
 import * as React from 'react';
+import {UserDataFooter, UserDataFooterProps} from './index';
 
 const defaults: UserDataFooterProps = {
-    user: {}
+    user: {},
 };
 
 describe('UserDataFooter component', () => {

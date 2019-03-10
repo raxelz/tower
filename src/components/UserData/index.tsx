@@ -6,11 +6,11 @@ import {
     withStyles,
 } from '@material-ui/core';
 import * as React from 'react';
+import {UserDataFooter} from './UserDataFooter';
+import {UserDataHeader} from './UserDataHeader';
+import {UserDocument} from './UserDocument';
 import {UserLabel} from './UserLabel';
 import {UserSummary} from './UserSummary';
-import {UserDataHeader} from './UserDataHeader';
-import {UserDataFooter} from './UserDataFooter';
-import {UserDocument} from './UserDocument';
 
 export interface TableHeaderItemInterface {
     key: string;
@@ -26,8 +26,11 @@ export interface UserDataProps {
     changeLabelValue: (value: string) => void;
     closeModal: () => void;
     deleteUserLabel: (uid: string, key: string, scope: string) => void;
+    // tslint:disable-next-line:no-any
     handleChangeUserState: (e: any) => void;
+    // tslint:disable-next-line:no-any
     handleChangeRole: (e: any) => void;
+    // tslint:disable-next-line:no-any
     handleChangeUserOTP: (e: any) => void;
     newLabelName: string;
     newLabelScope: string;
@@ -36,12 +39,15 @@ export interface UserDataProps {
     isEditLabelModalOpened: boolean;
     openAddLabelModal: () => void;
     openEditLabelModal: (key: string, value: string, scope: string) => void;
+    // tslint:disable-next-line:no-any
     user: any;
     page: number;
     rowsPerPage: number;
+    // tslint:disable-next-line:no-any
     handleChangePage: (page: any) => void;
     documentsRows: TableHeaderItemInterface[];
     showMore: boolean;
+    // tslint:disable-next-line:no-any
     showMoreUserInfo: (e: any) => void;
 }
 

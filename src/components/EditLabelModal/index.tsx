@@ -1,11 +1,9 @@
 import {
     Button,
-    Grid,
-    TextField,
-} from '@material-ui/core';
-import {
     createStyles,
+    Grid,
     Modal,
+    TextField,
     Theme,
     Typography,
     WithStyles,
@@ -121,11 +119,7 @@ class EditLabelModal extends React.Component<Props> {
                             margin="normal"
                             variant="outlined"
                         >
-                            {scopeTypes.map(option => (
-                                <option key={option.key} value={option.key}>
-                                    {option.value}
-                                </option>
-                            ))}
+                            {scopeTypes.map(option => (<option key={option.key} value={option.key}>{option.value}</option>))}
                         </TextField>
                     </Grid>
                     <Grid item={true}>
@@ -152,13 +146,17 @@ class EditLabelModal extends React.Component<Props> {
         );
     }
 
+    // tslint:disable-next-line:no-any
     private handleChangeName = (e: any) => {
         this.props.handleChangeLabelName(e.target.value.toLowerCase());
     };
+
+    // tslint:disable-next-line:no-any
     private handleChangeValue = (e: any) => {
         this.props.handleChangeLabelValue(e.target.value.toLowerCase());
     };
 
+    // tslint:disable-next-line:no-any
     private handleChangeScope = (e: any) => {
         this.props.handleChangeLabelScope(e.target.value);
     };

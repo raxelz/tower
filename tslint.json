@@ -1,4 +1,7 @@
 {
+  "extends": [
+    "@openware/coding-standards/tslint"
+  ],
   "linterOptions": {
     "exclude": [
       "config/*.js",
@@ -12,6 +15,10 @@
       "single",
       "jsx-double"
     ],
-    "no-magic-numbers": false
+    "no-magic-numbers": false,
+    "jsx-no-lambda": false,
+    "no-submodule-imports": false,
+    "jsx-no-multiline-js": false,
+    "no-object-literal-type-assertion": false
   }
 }

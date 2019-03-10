@@ -1,11 +1,15 @@
 import {mount} from 'enzyme';
-import {TableHeaderItemInterface, UserData, UserDataProps} from './index';
 import * as React from 'react';
-import {UserDataHeader} from './UserDataHeader';
-import {UserSummary} from './UserSummary';
-import {UserLabel} from './UserLabel';
-import {UserDocument} from './UserDocument';
-import {UserDataFooter} from './UserDataFooter';
+import {
+    TableHeaderItemInterface,
+    UserData,
+    UserDataProps,
+} from './index';
+import { UserDataFooter } from './UserDataFooter';
+import { UserDataHeader } from './UserDataHeader';
+import { UserDocument } from './UserDocument';
+import { UserLabel } from './UserLabel';
+import { UserSummary } from './UserSummary';
 
 const defaults: UserDataProps = {
     addNewLabel: jest.fn(),
@@ -36,7 +40,7 @@ const defaults: UserDataProps = {
 
 describe('UserData component', () => {
     const setup = (props: Partial<UserDataProps> = {}) => {
-        return mount(<UserData {...{...defaults, ...props}}/>)
+        return mount(<UserData {...{...defaults, ...props}}/>);
     };
 
     it('should render', () => {
@@ -67,5 +71,5 @@ describe('UserData component', () => {
     it('should render UserDataFooter', () => {
         const wrapper = setup();
         expect(wrapper.find(UserDataFooter)).toHaveLength(1);
-    })
+    });
 });

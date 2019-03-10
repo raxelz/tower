@@ -8,14 +8,14 @@ import {
     setupMockStore,
 } from '../../../../helpers';
 import {
+    alertData,
+    alertDelete,
+    alertPush,
+} from '../../../alert';
+import {
     getCurrentUser,
     getCurrentUserData,
 } from '../actions';
-import {
-    alertPush,
-    alertData,
-    alertDelete,
-} from '../../../alert';
 
 describe('GetCurrentUser saga', () => {
     let store: MockStoreEnhanced;

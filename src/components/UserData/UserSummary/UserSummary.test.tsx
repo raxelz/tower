@@ -1,6 +1,6 @@
-import {UserSummary, UserSummaryProps} from './index';
 import {shallow} from 'enzyme';
 import * as React from 'react';
+import {UserSummary, UserSummaryProps} from './index';
 
 const defaults: UserSummaryProps = {
     classes: {},

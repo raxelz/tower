@@ -71,7 +71,7 @@ export const formatError = (responseError: AxiosError) => {
     };
 };
 
-export const makeRequest = (request: Request) => {
+export const makeRequest = async (request: Request) => {
     const requestConfig = buildRequest(request);
 
     return new Promise((resolve, reject) => {

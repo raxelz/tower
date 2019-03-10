@@ -12,6 +12,7 @@ export interface UserDataFetch {
 
 export interface UserDataSuccess {
     type: typeof GET_USER_DATA_SUCCESS;
+    // tslint:disable-next-line:no-any
     payload: any;
 }
 

@@ -132,7 +132,7 @@ class DashboardUserTable extends React.Component<Props, UserTableState> {
     }
 
     private handleChangeSearchPoint = (value: string) => {
-        const item = this.dropdownValues.find(item => item.value === value);
+        const item = this.dropdownValues.find(elem => elem.value === value);
         if (item) {
             this.setState({
                 searchPoint: item,
@@ -163,6 +163,7 @@ class DashboardUserTable extends React.Component<Props, UserTableState> {
         }
     };
 
+    // tslint:disable-next-line:no-any
     private handleSearch = (e?: any) => {
         if (e) {
             e.preventDefault();

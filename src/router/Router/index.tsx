@@ -11,11 +11,9 @@ import {
     UserInfo,
 } from '../../containers';
 
+// tslint:disable-next-line
 const PrivateRoute: React.SFC<any> = ({ component: CustomComponent, isLogged, ...rest }) => {
-    return <Route {...rest} render={props => (
-        isLogged ? <CustomComponent {...props} /> :
-            <Redirect to="/login" />
-    )} />;
+    return (<Route {...rest} render={props => (isLogged ? <CustomComponent {...props} /> : <Redirect to="/login" />)} />);
 };
 
 class Router extends React.Component {
@@ -26,8 +24,7 @@ class Router extends React.Component {
                 <PrivateRoute isLogged={isCurrentSession} exact={true} path="/" component={Dashboard}/>
                 <Route exact={true} path="/login" component={Login}/>
                 <PrivateRoute isLogged={isCurrentSession} path="/users/:uid" component={UserInfo} />
-                <Route path="**"
-                           render={() => <Redirect to="/" />} />
+                <Route path="**" render={() => <Redirect to="/"/>}/>
             </Switch>
         );
     }

@@ -1,20 +1,20 @@
 import MockAdapter from 'axios-mock-adapter';
 import { MockStoreEnhanced } from 'redux-mock-store';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
-import { rootSaga, getUserData } from '../../';
+import { getUserData, rootSaga } from '../../';
 import {
     mockNetworkError,
     setupMockAxios,
     setupMockStore,
 } from '../../../helpers';
 import {
-    changeUserRole,
-} from '../actions';
-import {
-    alertPush,
     alertData,
     alertDelete,
+    alertPush,
 } from '../../alert';
+import {
+    changeUserRole,
+} from '../actions';
 
 describe('ChangeUserRole saga', () => {
     let store: MockStoreEnhanced;

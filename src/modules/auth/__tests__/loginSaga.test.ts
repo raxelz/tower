@@ -8,14 +8,14 @@ import {
     setupMockStore,
 } from '../../../helpers';
 import {
+    alertData,
+    alertDelete,
+    alertPush,
+} from '../../alert';
+import {
     login,
     loginData,
 } from '../actions';
-import {
-    alertPush,
-    alertData,
-    alertDelete,
-} from '../../alert';
 
 describe('Login saga', () => {
     let store: MockStoreEnhanced;
@@ -35,7 +35,7 @@ describe('Login saga', () => {
 
     const fakeCredentials = {
         email: 'john.barong@gmail.com',
-        password: '123123'
+        password: '123123',
     };
 
     const fakeUser = {

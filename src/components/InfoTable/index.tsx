@@ -20,10 +20,12 @@ import {
 interface InfoTableProps {
     dataLength: number;
     rows: Array<{ key: string; alignRight: boolean; label: string; }>;
+    // tslint:disable-next-line:no-any
     data: any;
     page: number;
     rowsPerPage: number;
-    handleChangePage: (page: any) => void;
+
+    handleChangePage: (page: number) => void;
     hidePagination?: boolean;
 }
 
@@ -68,26 +70,29 @@ class TableComponent extends React.Component<Props> {
                     <Table className={classes.table} aria-labelledby="tableTitle">
                         {this.getHeaderForTable()}
                         <TableBody>
-                            {data.map((n: any, i: number) => {
-                                return (
-                                    <TableRow key={i}>
-                                        {rows.map((row: any, index: number) => {
-                                            return (
-                                                <TableCell key={index} component="th" align={row.alignRight ? 'right' : 'left'}>
-                                                    { row.key === 'email' ? (<Link to={`/users/${n.uid}`} className={classes.link}>{n.email}</Link>)
-                                                        : row.key === 'otp' ? (convertToOtp(n.otp) === 'true' ? '2FA' : '-')
-                                                        : row.key === 'upload' ? (<a target="_blank" href={n.upload.url} className={classes.link}>Image</a>)
-                                                        : row.key === 'created_at' || row.key === 'validated_at' || row.key === 'updated_at' ? (convertToUTCTime(n[row.key])) : n[row.key]}
-                                                </TableCell>
-                                            );})
-                                        }
-                                    </TableRow>
-                                );
-                            })}
+                            { // tslint:disable:no-any
+                                data.map((n: any, i: number) => {
+                                    return (
+                                        <TableRow key={i}>
+                                            {rows.map((row: any, index: number) => {
+                                                return (
+                                                    <TableCell key={index} component="th" align={row.alignRight ? 'right' : 'left'}>
+                                                        { row.key === 'email' ? (<Link to={`/users/${n.uid}`} className={classes.link}>{n.email}</Link>)
+                                                            : row.key === 'otp' ? (convertToOtp(n.otp) === 'true' ? '2FA' : '-')
+                                                            : row.key === 'upload' ? (<a target="_blank" href={n.upload.url} className={classes.link}>Image</a>)
+                                                            : row.key === 'created_at' || row.key === 'validated_at' || row.key === 'updated_at' ? (convertToUTCTime(n[row.key])) : n[row.key]}
+                                                    </TableCell>
+                                                );})
+                                            }
+                                        </TableRow>
+                                    );
+                                }) // tslint:enable:no-any
+                            }
                         </TableBody>
                     </Table>
                 </div>
-                {!hidePagination ? (<TablePagination
+                {!hidePagination ? (
+                    <TablePagination
                         component="div"
                         count={Number(dataLength)}
                         rowsPerPage={this.props.rowsPerPage}
@@ -106,6 +111,7 @@ class TableComponent extends React.Component<Props> {
         );
     }
 
+    // tslint:disable-next-line:no-any
     private handleChangePage = (event: any, page: number) => {
         this.props.handleChangePage(page);
     };

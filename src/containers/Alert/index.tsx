@@ -29,12 +29,6 @@ interface DispatchProps {
     alertDeleteByIndex: typeof alertDeleteByIndex;
 }
 
-interface StyleProps extends WithStyles<typeof styles> {
-    theme: Theme;
-}
-
-type Props = ReduxProps & DispatchProps & StyleProps;
-
 const styles = (theme: Theme) => createStyles({
     wrapper: {
         position: 'absolute',
@@ -42,6 +36,12 @@ const styles = (theme: Theme) => createStyles({
         top: 10,
     },
 });
+
+interface StyleProps extends WithStyles<typeof styles> {
+    theme: Theme;
+}
+
+type Props = ReduxProps & DispatchProps & StyleProps;
 
 class AlertComponent extends React.Component<Props> {
     public deleteAlertByIndex = (key: number) => {

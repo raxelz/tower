@@ -23,6 +23,7 @@ import {
 } from '../../modules';
 
 interface ReduxProps {
+    // tslint:disable-next-line:no-any
     userData: any;
 }
 
@@ -38,6 +39,7 @@ interface DispatchProps {
 }
 
 interface OwnProps {
+    // tslint:disable-next-line:no-any
     match: any;
 }
 
@@ -95,8 +97,9 @@ class UserInfoScreen extends React.Component<Props, UserInfoState> {
 
         return (
             <Layout logout={this.userLogout}>
-                { this.props.userData
-                    ? (<UserData
+                {this.props.userData
+                    ? (
+                        <UserData
                             documentsRows={this.documentsRows}
                             addNewLabel={this.addLabel}
                             editLabel={this.editLabel}
@@ -206,17 +209,19 @@ class UserInfoScreen extends React.Component<Props, UserInfoState> {
         this.changeValueForNewLabel('');
     };
 
+    // tslint:disable-next-line:no-any
     private handleChangeUserState = (e: any) => {
         const { uid } = this.props.userData;
         this.props.changeUserState({uid: uid, state : e.target.value});
-
     };
 
+    // tslint:disable-next-line:no-any
     private handleChangeRole = (e: any) => {
         const { uid } = this.props.userData;
         this.props.changeUserRole({uid: uid, role: e.target.value});
     };
 
+    // tslint:disable-next-line:no-any
     private handleChangeUserOTP = (e: any) => {
         if (!e.target.checked){
             const { uid } = this.props.userData;
@@ -226,6 +231,7 @@ class UserInfoScreen extends React.Component<Props, UserInfoState> {
         }
     };
 
+    // tslint:disable-next-line:no-any
     private showMoreUserInfo = (e: any) => {
         this.setState({ showMore: !this.state.showMore });
     };
