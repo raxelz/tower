@@ -58,6 +58,7 @@ class DashboardUserTable extends React.Component<Props, UserTableState> {
         { key: 'level', alignRight: true, label: 'Level' },
         { key: 'role', alignRight: true, label: 'Role' },
         { key: 'uid', alignRight: true, label: 'UID' },
+        { key: 'state', alignRight: true, label: 'State'},
     ];
 
     private dropdownValues = [
