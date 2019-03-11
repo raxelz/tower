@@ -1,5 +1,5 @@
-import * as actions from '../actions';
-import { initialLabelState, labelReducer } from '../reducer';
+import * as actions from './actions';
+import { initialLabelState, labelReducer } from './reducer';
 
 describe('Label reducer', () => {
     it('should handle ADD_USER_LABEL_FETCH', () => {

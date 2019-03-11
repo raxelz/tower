@@ -1,4 +1,4 @@
-import * as actions from '../actions';
+import * as actions from './actions';
 
 describe('ChangeUser actions', () => {
     it('should check changeUserOTP action creator', () => {

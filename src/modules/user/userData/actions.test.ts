@@ -1,4 +1,4 @@
-import * as actions from '../actions';
+import * as actions from './actions';
 
 describe('UserData actions', () => {
     it('should check getUserData action creator', () => {

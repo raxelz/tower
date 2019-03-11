@@ -1,5 +1,5 @@
-import * as actions from '../actions';
-import { changeUserReducer, initialChangeUserState } from '../reducer';
+import * as actions from './actions';
+import { changeUserReducer, initialChangeUserState } from './reducer';
 
 describe('Change user reducer', () => {
     it('should handle CHANGE_USER_OTP_FETCH', () => {

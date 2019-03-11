@@ -1,4 +1,4 @@
-import * as actions from '../actions';
+import * as actions from './actions';
 
 describe('Label actions', () => {
     it('should check addNewLabel action creator', () => {
