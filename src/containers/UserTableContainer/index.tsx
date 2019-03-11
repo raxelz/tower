@@ -16,6 +16,7 @@ import {
     AppState,
     getDataByFilter,
     getUsers,
+    getUsersByLabel,
     selectUsers,
     selectUsersTotal,
     UserInterface,
@@ -36,6 +37,7 @@ interface ReduxProps {
 interface DispatchProps {
     getUsers: typeof getUsers;
     getDataByFilter: typeof getDataByFilter;
+    getUsersByLabel: typeof getUsersByLabel;
 }
 
 type Props = ReduxProps & DispatchProps;
@@ -89,6 +91,10 @@ class DashboardUserTable extends React.Component<Props, UserTableState> {
         {
             label: 'State',
             value: 'state',
+        },
+        {
+            label: 'Documents',
+            value: 'documents',
         },
     ];
 
@@ -151,16 +157,26 @@ class DashboardUserTable extends React.Component<Props, UserTableState> {
     private handleChangePage = (page: number) => {
         const { searchValue, searchPoint } = this.state;
         this.setState({ page });
-        if (searchPoint.value === 'all') {
-            this.props.getUsers({ limit: tablePageLimit(), page: page + 1});
-        } else {
-          const requestObject = {
-              field: searchPoint.value,
-              value: searchValue.toLowerCase(),
-              page: page + 1,
-              limit: tablePageLimit(),
-          };
-          this.props.getDataByFilter(requestObject);
+        switch (searchPoint.value) {
+            case 'all':
+                this.props.getUsers({ limit: tablePageLimit(), page: page + 1});
+                break;
+            case 'documents':
+                this.props.getUsersByLabel({
+                    key: 'document',
+                    value: searchValue.toLowerCase(),
+                    limit: tablePageLimit(),
+                    page: page + 1,
+                });
+                break;
+            default:
+                const requestObject = {
+                    field: searchPoint.value,
+                    value: searchValue.toLowerCase(),
+                    page: page + 1,
+                    limit: tablePageLimit(),
+                };
+                this.props.getDataByFilter(requestObject);
         }
     };
 
@@ -170,17 +186,28 @@ class DashboardUserTable extends React.Component<Props, UserTableState> {
             e.preventDefault();
         }
         const { searchValue, searchPoint } = this.state;
-        if (searchPoint.value === 'all') {
-            this.props.getUsers({ limit: tablePageLimit(), page: 1});
-        } else {
-            const requestObject = {
-                field: searchPoint.value,
-                value: searchValue.toLowerCase(),
-                page: 1,
-                limit: tablePageLimit(),
-            };
-            this.props.getDataByFilter(requestObject);
+        switch (searchPoint.value) {
+            case 'all':
+                this.props.getUsers({ limit: tablePageLimit(), page: 1});
+                break;
+            case 'documents':
+                this.props.getUsersByLabel({
+                    key: 'document',
+                    value: searchValue.toLowerCase(),
+                    limit: tablePageLimit(),
+                    page: 1,
+                });
+                break;
+            default:
+                const requestObject = {
+                    field: searchPoint.value,
+                    value: searchValue.toLowerCase(),
+                    page: 1,
+                    limit: tablePageLimit(),
+                };
+                this.props.getDataByFilter(requestObject);
         }
+
         this.setState({
             page: 0,
         });
@@ -197,6 +224,7 @@ const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, {}> =
     dispatch => ({
         getUsers: payload => dispatch(getUsers(payload)),
         getDataByFilter: payload => dispatch(getDataByFilter(payload)),
+        getUsersByLabel: payload => dispatch(getUsersByLabel(payload)),
     });
 
 export const UsersTableContainer = connect(mapStateToProps, mapDispatchToProps)(DashboardUserTable);
